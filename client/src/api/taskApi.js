@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: `${process.env.PUBLIC_API_URL}/api/tasks`,
+  baseURL: `${import.meta.env.VITE_API_URL}/api/tasks`,
   headers: { "Content-Type": "application/json" },
   withCredentials: true,
 });
