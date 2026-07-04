@@ -29,9 +29,10 @@ router.post("/login", async (req, res) => {
 
     res.cookie("accessToken", token, {
       httpOnly: true,
-      secure: true,
+      secure: process.env.NODE_ENV === "production",
       maxAge: 1000 * 60 * 60,
       sameSite: "none",
+      path: "/",
     });
     res.status(200).json({ message: "Login success." });
   } catch (error) {
@@ -71,9 +72,10 @@ router.post("/signup", async (req, res) => {
 
     res.cookie("accessToken", token, {
       httpOnly: true,
-      secure: true,
+      secure: process.env.NODE_ENV === "production",
       maxAge: 1000 * 60 * 60,
       sameSite: "none",
+      path: "/",
     });
 
     res.status(200).json({
@@ -103,6 +105,9 @@ router.get("/me", authMiddleware, async (req, res) => {
 router.post("/logout", async (req, res) => {
   res.clearCookie("accessToken", {
     httpOnly: true,
+    sameSite: "none",
+    secure: true,
+    path: "/",
   });
   return res.status(200).json({ message: "Logout success." });
 });
