@@ -29,6 +29,9 @@ router.post("/login", async (req, res) => {
 
     res.cookie("accessToken", token, {
       httpOnly: true,
+      secure: true,
+      maxAge: 1000 * 60 * 60,
+      sameSite: "none",
     });
     res.status(200).json({ message: "Login success." });
   } catch (error) {
@@ -68,7 +71,9 @@ router.post("/signup", async (req, res) => {
 
     res.cookie("accessToken", token, {
       httpOnly: true,
-      sameSite: "strict",
+      secure: true,
+      maxAge: 1000 * 60 * 60,
+      sameSite: "none",
     });
 
     res.status(200).json({
