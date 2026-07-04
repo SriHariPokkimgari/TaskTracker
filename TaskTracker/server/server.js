@@ -20,6 +20,7 @@ app.use("/api/auth", authRouter);
 
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
+const user = "ai";
 
 mongoose
   .connect(MONGO_URI)
