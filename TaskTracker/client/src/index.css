@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+/* ─── Class-based dark mode ─── */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ─── Custom Theme Setup with Prescribed Colors ─── */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Colors - Light mode default theme variables mapping */
+  --color-bg-light: #f4f3ef;
+  --color-fg-light: #1a1825;
+  --color-card-light: #ffffff;
+  --color-primary-light: #3d35c8;
+  --color-primary-fg-light: #ffffff;
+  --color-secondary-light: #eae9f5;
+  --color-secondary-fg-light: #3d35c8;
+  --color-muted-light: #e8e7e2;
+  --color-muted-fg-light: #6b6880;
+  --color-accent-light: #f0a500;
+  --color-border-light: rgba(26, 24, 37, 0.1);
+  --color-input-bg-light: #eae9e3;
+
+  /* Colors - Dark mode theme variables mapping */
+  --color-bg-dark: #141220;
+  --color-fg-dark: #e8e6f0;
+  --color-card-dark: #1e1c2e;
+  --color-primary-dark: #6b63e8;
+  --color-primary-fg-dark: #ffffff;
+  --color-secondary-dark: #252240;
+  --color-secondary-fg-dark: #a09de0;
+  --color-muted-dark: #252240;
+  --color-muted-fg-dark: #8c89a8;
+  --color-accent-dark: #f0a500;
+  --color-accent-fg-dark: #141220;
+  --color-border-dark: rgba(232, 230, 240, 0.1);
+  --color-input-bg-dark: #252240;
+
+  /* Animations */
+  --animate-fade-in: fade-in 0.25s ease-out both;
+  --animate-fade-in-up: fade-in-up 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-scale-in: scale-in 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-modal-in: modal-in 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ─── Keyframes ─── */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes modal-in {
+  from { opacity: 0; transform: scale(0.96) translateY(8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ─── Custom Global Styles ─── */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-light);
+  color: var(--color-fg-light);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dark body {
+  background-color: var(--color-bg-dark);
+  color: var(--color-fg-dark);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(107, 99, 232, 0.25);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(107, 99, 232, 0.45);
+}
